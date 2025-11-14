@@ -1,0 +1,13 @@
+# Install dependencies
+npm install react-router-dom
+
+# Run locally
+npm start
+
+# Build for production
+npm run build
+
+# Commit and push everything
+git add package.json vercel.json public/index.html src/index.js src/App.js src/pages/Home.js src/pages/About.js src/pages/Login.js src/pages/Dashboard.js
+git commit -m "Finalize TrustBank frontend with routing and dashboard"
+git push origin main
