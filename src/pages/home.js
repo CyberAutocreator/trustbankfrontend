@@ -3,8 +3,8 @@ import React from 'react';
 export default function Home() {
   return (
     <div>
-      <h1>TrustBank Frontend</h1>
-      <p>Welcome to the TrustBank frontend. This is the Home page.</p>
+      <h2>Welcome to TrustBank</h2>
+      <p>This is the home page of your frontend app.</p>
     </div>
   );
 }
