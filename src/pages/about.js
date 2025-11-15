@@ -3,8 +3,8 @@ import React from 'react';
 export default function About() {
   return (
     <div>
-      <h1>About TrustBank</h1>
-      <p>Information about the TrustBank frontend.</p>
+      <h2>About TrustBank</h2>
+      <p>TrustBank is a modern banking platform built with React and deployed on Vercel.</p>
     </div>
   );
 }
