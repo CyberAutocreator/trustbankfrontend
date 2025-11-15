@@ -3,8 +3,8 @@ import React from 'react';
 export default function Login() {
   return (
     <div>
-      <h1>Login</h1>
-      <p>Login form goes here.</p>
+      <h2>Login</h2>
+      <p>Please enter your credentials to access your account.</p>
     </div>
   );
 }
