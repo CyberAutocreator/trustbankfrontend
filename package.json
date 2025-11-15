@@ -7,5 +7,4 @@
   "@jridgewell/sourcemap-codec": "^1.5.0",
   "@rollup/plugin-terser": "^0.4.4",
   "glob": "^10.3.10",
-  "rimraf": "^5.
-}
+  "rimraf": "^5.0.7"
