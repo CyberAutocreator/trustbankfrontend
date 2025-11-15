@@ -6,7 +6,7 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-router-dom": "6.26.1",
-  "react-scripts": "latest"
+    "react-scripts": "5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -24,7 +24,6 @@
     "@rollup/plugin-terser": "^0.4.4",
     "glob": "^10.3.10",
     "rimraf": "^5.0.7"
-    "homepage": "."
-
-  }
+  },
+  "homepage": "."
 }
