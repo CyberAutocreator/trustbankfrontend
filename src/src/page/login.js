@@ -1,17 +1,63 @@
-import express from "express";
-import jwt from "jsonwebtoken";
-const router = express.Router();
+// src/login.js
+import React, { useState } from 'react';
 
-// Simulated user database
-const users = [{ email: "ruth@trustbank.com", password: "allen123" }];
+function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
 
-router.post("/login", (req, res) => {
-  const { email, password } = req.body;
-  const user = users.find(u => u.email === email && u.password === password);
-  if (!user) return res.status(401).json({ error: "Invalid email or password" });
+  const handleLogin = async (e) => {
+    e.preventDefault();
 
-  const token = jwt.sign({ email }, "your-secret", { expiresIn: "1h" });
-  res.json({ accessToken: token });
-});
+    try {
+      const response = await fetch('https://trustbank-backend.onrender.com/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
 
-export default router;
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage('Login successful!');
+        // You can store token or redirect here
+        // localStorage.setItem('token', data.token);
+      } else {
+        setMessage(data.message || 'Login failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setMessage('Something went wrong');
+    }
+  };
+
+  return (
+    <div>
+      <h2>Login</h2>
+      <form onSubmit={handleLogin}>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <br />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <br />
+        <button type="submit">Login</button>
+      </form>
+      <p>{message}</p>
+    </div>
+  );
+}
+
+export default Login;
