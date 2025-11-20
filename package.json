@@ -7,9 +7,6 @@
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
     "web-vitals": "^3.5.2"
-    
-    // KEEP YOUR EXISTING APPLICATION LIBRARIES HERE
-    // e.g., "axios": "^1.6.8", "react-router-dom": "^6.23.0", etc.
   },
   "scripts": {
     "start": "react-scripts start",
