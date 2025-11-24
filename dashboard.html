@@ -41,7 +41,7 @@
     }
     .menu a:hover { background:#1a2238; }
     /* Main content */
-    .container { flex:1; padding:30px; }
+    .container { flex:1; padding:30px; overflow-y:auto; }
     .card {
       background: var(--card);
       padding:24px;
@@ -86,35 +86,6 @@
       --muted: #555555;
       --accent: #0077cc;
     }
-    /* Modal styles */
-    .modal {
-      display:none;
-      position:fixed;
-      top:0; left:0; width:100%; height:100%;
-      background:rgba(0,0,0,0.6);
-      align-items:center;
-      justify-content:center;
-    }
-    .modal-content {
-      background: var(--card);
-      padding:20px;
-      border-radius:12px;
-      width:300px;
-      box-shadow:0 8px 30px rgba(2,6,23,0.6);
-    }
-    .modal-content h3 { margin-top:0; }
-    .modal-content label { display:block; margin:10px 0 6px; font-size:14px; color: var(--muted); }
-    .modal-content input { width:100%; padding:8px; border-radius:8px; border:1px solid rgba(255,255,255,0.08); background:#0a1428; color: var(--text); }
-    .close-btn {
-      margin-top:12px;
-      background: var(--accent);
-      color:#052e17;
-      padding:8px 12px;
-      border:none;
-      border-radius:8px;
-      font-weight:700;
-      cursor:pointer;
-    }
   </style>
 </head>
 <body>
@@ -133,76 +104,15 @@
   <div class="container">
     <div class="card">
       <h1>Welcome, Trust Bank User</h1>
-      <div class="balance">₦1,250,000.00</div>
-      <div class="label">Available Balance</div>
+      <div class="balance">$450,000,000.00</div>
+      <div class="label">Available Balance (USD)</div>
     </div>
 
     <div class="card">
-      <h2>Recent Transactions</h2>
-      <div class="row"><div class="label">20-Nov-2025</div><div class="value">Mortgage Payment − ₦49,764.00</div></div>
-      <div class="row"><div class="label">18-Nov-2025</div><div class="value">Salary Credit + ₦250,000.00</div></div>
-      <div class="row"><div class="label">15-Nov-2025</div><div class="value">Utility Bill − ₦15,000.00</div></div>
-      <div class="actions">
-        <a href="receipt.html" class="btn">View Receipt</a>
-        <a href="login.html" class="btn">Logout</a>
-      </div>
-    </div>
-
-    <!-- Biometric access simulation -->
-    <div class="biometric" id="biometricBtn">🔒 Unlock with Biometrics</div>
-    <div id="bioMsg" style="margin-top:10px;color:#9fb0c9;"></div>
-  </div>
-
-  <!-- Settings Modal -->
-  <div class="modal" id="settingsModal">
-    <div class="modal-content">
-      <h3>Settings</h3>
-      <label for="notif">Notifications</label>
-      <input type="text" id="notif" placeholder="On / Off" />
-      <label for="acct">Account Info</label>
-      <input type="text" id="acct" placeholder="Update name/email" />
-      <button class="close-btn" id="closeSettings">Close</button>
-    </div>
-  </div>
-
-  <!-- Mobile Deposit Modal -->
-  <div class="modal" id="depositModal">
-    <div class="modal-content">
-      <h3>Mobile Deposit</h3>
-      <label for="checkNum">Check Number</label>
-      <input type="text" id="checkNum" placeholder="Enter check number" />
-      <label for="amount">Amount</label>
-      <input type="text" id="amount" placeholder="Enter amount" />
-      <button class="close-btn" id="closeDeposit">Close</button>
-    </div>
-  </div>
-
-  <!-- Bill Pay Modal -->
-  <div class="modal" id="billModal">
-    <div class="modal-content">
-      <h3>Bill Pay</h3>
-      <label for="biller">Biller Name</label>
-      <input type="text" id="biller" placeholder="Enter biller name" />
-      <label for="billAmt">Amount</label>
-      <input type="text" id="billAmt" placeholder="Enter amount" />
-      <button class="close-btn" id="closeBill">Close</button>
-    </div>
-  </div>
-
-  <script>
-    // Biometric simulation
-    document.getElementById("biometricBtn").addEventListener("click", () => {
-      document.getElementById("bioMsg").textContent = "✅ Biometric authentication successful (simulated).";
-    });
-
-    // Theme toggle
-    document.getElementById("themeToggle").addEventListener("click", () => {
-      document.body.classList.toggle("light");
-    });
-
-    // Settings modal
-    const settingsBtn = document.getElementById("settingsBtn");
-    const settingsModal = document.getElementById("settingsModal");
-    const closeSettings = document.getElementById("closeSettings");
-    settingsBtn.addEventListener("click", () => { settingsModal.style.display = "flex"; });
-    closeSettings.addEventListener("click", () => { settingsModal.style.display = "none
+      <h2>Transaction History (Last 55 Days)</h2>
+      <!-- Example transactions across 30–55 days -->
+      <div class="row"><div class="label">24-Nov-2025</div><div class="value">Wire Transfer − $1,200,000.00</div></div>
+      <div class="row"><div class="label">20-Nov-2025</div><div class="value">Mortgage Payment − $49,764.00</div></div>
+      <div class="row"><div class="label">15-Nov-2025</div><div class="value">Salary Credit + $5,000,000.00</div></div>
+      <div class="row"><div class="label">10-Nov-2025</div><div class="value">Utility Bill − $15,000.00</div></div>
+      <div class="row"><div class="label">05-Nov-2025</div><div class="value">
