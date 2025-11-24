@@ -20,7 +20,6 @@
       display: flex;
       transition: background 0.3s, color 0.3s;
     }
-    /* Sidebar */
     .sidebar {
       width: 220px;
       background: var(--card);
@@ -40,7 +39,6 @@
       cursor:pointer;
     }
     .menu a:hover { background:#1a2238; }
-    /* Main content */
     .container { flex:1; padding:30px; overflow-y:auto; }
     .card {
       background: var(--card);
@@ -48,7 +46,6 @@
       border-radius:12px;
       margin-bottom:20px;
       box-shadow:0 8px 30px rgba(2,6,23,0.6);
-      transition: background 0.3s;
     }
     h1 { margin-bottom:16px; }
     .balance { font-size:28px; font-weight:800; color: var(--accent); margin-bottom:12px; }
@@ -80,7 +77,6 @@
       font-weight:600;
     }
     .biometric:hover { background:#24304a; }
-    /* Light theme overrides */
     body.light {
       --bg: #f5f7fa;
       --card: #ffffff;
@@ -114,55 +110,20 @@
     <div class="card">
       <h2>Transaction History (Last 55 Days)</h2>
 
-      <div class="row">
-        <div class="label">24-Nov-2025</div>
-        <div class="value"><a href="receipt-wire.html">Wire Transfer − $1,200,000.00</a></div>
-      </div>
-
-      <div class="row">
-        <div class="label">20-Nov-2025</div>
-        <div class="value"><a href="receipt-mortgage.html">Mortgage Payment − $49,764.00</a></div>
-      </div>
-
-      <<div class="row">
-  <div class="label">15-Oct-2025</div>
-  <div class="value"><a href="receipt-loan.html">Loan Repayment − $3,000,000.00</a></div>
-</div>
-
-<div class="row">
-  <div class="label">28-Oct-2025</div>
-  <div class="value"><a href="receipt-intl.html">International Transfer − $750,000.00</a></div>
-</div>
-
-
-      <div class="row">
-        <div class="label">05-Nov-2025</div>
-        <div class="value"><a href="receipt-dividend.html">Investment Dividend + $12,500,000.00</a></div>
-      </div>
-
-      <div class="row">
-        <div class="label">01-Nov-2025</div>
-        <div class="value"><a href="receipt-expense.html">Corporate Expense − $2,000,000.00</a></div>
-      </div>
-        <div class="card">
-  <h2>Transaction History (Last 55 Days)</h2>
-
-  <!-- Existing rows -->
-  <div class="row">
-    <div class="label">24-Nov-2025</div>
-    <div class="value"><a href="receipt-wire.html">Wire Transfer − $1,200,000.00</a></div>
-  </div>
-
-  <div class="row">
-    <div class="label">20-Nov-2025</div>
-    <div class="value"><a href="receipt-mortgage.html">Mortgage Payment − $49,764.00</a></div>
-  </div>
-
-  <!-- … other rows … -->
-
-  <!-- 👇 Paste your new rows here -->
-</div>
-
+      <div class="row"><div class="label">24-Nov-2025</div><div class="value"><a href="receipt-wire.html">Wire Transfer − $1,200,000.00</a></div></div>
+      <div class="row"><div class="label">20-Nov-2025</div><div class="value"><a href="receipt-mortgage.html">Mortgage Payment − $49,764.00</a></div></div>
+      <div class="row"><div class="label">15-Nov-2025</div><div class="value"><a href="receipt-salary.html">Salary Credit + $5,000,000.00</a></div></div>
+      <div class="row"><div class="label">10-Nov-2025</div><div class="value"><a href="receipt-utility.html">Utility Bill − $15,000.00</a></div></div>
+      <div class="row"><div class="label">05-Nov-2025</div><div class="value"><a href="receipt-dividend.html">Investment Dividend + $12,500,000.00</a></div></div>
+      <div class="row"><div class="label">01-Nov-2025</div><div class="value"><a href="receipt-expense.html">Corporate Expense − $2,000,000.00</a></div></div>
+      <div class="row"><div class="label">28-Oct-2025</div><div class="value"><a href="receipt-intl.html">International Transfer − $750,000.00</a></div></div>
+      <div class="row"><div class="label">22-Oct-2025</div><div class="value"><a href="receipt-salary2.html">Salary Credit + $4,500,000.00</a></div></div>
+      <div class="row"><div class="label">15-Oct-2025</div><div class="value"><a href="receipt-loan.html">Loan Repayment − $3,000,000.00</a></div></div>
+      <div class="row"><div class="label">05-Oct-2025</div><div class="value"><a href="receipt-dividend2.html">Investment Dividend + $10,000,000.00</a></div></div>
+      <div class="row"><div class="label">30-Sep-2025</div><div class="value"><a href="receipt-expense2.html">Corporate Expense − $1,500,000.00</a></div></div>
+      <div class="row"><div class="label">25-Sep-2025</div><div class="value"><a href="receipt-salary3.html">Salary Credit + $6,000,000.00</a></div></div>
+      <div class="row"><div class="label">20-Sep-2025</div><div class="value"><a href="receipt-wire2.html">Wire Transfer − $2,500,000.00</a></div></div>
+      <div class="row"><div class="label">15-Sep-2025</div><div class="value"><a href="receipt-dividend2.html">Investment Dividend + $8,000,000.00</a></div></div>
 
       <div class="actions">
         <a href="login.html" class="btn">Logout</a>
@@ -175,12 +136,9 @@
   </div>
 
   <script>
-    // Biometric simulation
     document.getElementById("biometricBtn").addEventListener("click", () => {
       document.getElementById("bioMsg").textContent = "✅ Biometric authentication successful (simulated).";
     });
-
-    // Theme toggle
     document.getElementById("themeToggle").addEventListener("click", () => {
       document.body.classList.toggle("light");
     });
