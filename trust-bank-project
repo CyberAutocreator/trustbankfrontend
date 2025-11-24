@@ -1,0 +1,14 @@
+trust-bank-project/
+│
+├── login.html
+├── dashboard.html
+├── receipt-wire.html
+├── receipt-mortgage.html
+├── receipt-salary.html
+├── receipt-utility.html
+├── receipt-dividend.html
+├── receipt-expense.html
+├── receipt-loan.html
+├── receipt-intl.html
+├── receipt-salary2.html        ← extra salary credit
+├── receipt-dividend2.html      ← extra dividend payout
