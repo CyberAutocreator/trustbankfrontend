@@ -10,5 +10,8 @@ trust-bank-project/
 ├── receipt-expense.html
 ├── receipt-loan.html
 ├── receipt-intl.html
-├── receipt-salary2.html        ← extra salary credit
-├── receipt-dividend2.html      ← extra dividend payout
+├── receipt-salary2.html
+├── receipt-dividend2.html
+├── receipt-salary3.html       ← 25-Sep salary credit
+├── receipt-expense2.html      ← 30-Sep corporate expense
+├── receipt-wire2.html         ← 20-Sep wire transfer
