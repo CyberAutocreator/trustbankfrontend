@@ -56,6 +56,8 @@
     .row:last-child { border-bottom:none; }
     .label { color: var(--muted); font-size:14px; }
     .value { font-weight:600; }
+    .value a { color: var(--accent); text-decoration:none; }
+    .value a:hover { text-decoration:underline; }
     .btn {
       display:inline-block;
       margin-top:16px;
@@ -108,11 +110,60 @@
       <div class="label">Available Balance (USD)</div>
     </div>
 
+    <!-- Transaction history card -->
     <div class="card">
       <h2>Transaction History (Last 55 Days)</h2>
-      <!-- Example transactions across 30–55 days -->
-      <div class="row"><div class="label">24-Nov-2025</div><div class="value">Wire Transfer − $1,200,000.00</div></div>
-      <div class="row"><div class="label">20-Nov-2025</div><div class="value">Mortgage Payment − $49,764.00</div></div>
-      <div class="row"><div class="label">15-Nov-2025</div><div class="value">Salary Credit + $5,000,000.00</div></div>
-      <div class="row"><div class="label">10-Nov-2025</div><div class="value">Utility Bill − $15,000.00</div></div>
-      <div class="row"><div class="label">05-Nov-2025</div><div class="value">
+
+      <div class="row">
+        <div class="label">24-Nov-2025</div>
+        <div class="value"><a href="receipt-wire.html">Wire Transfer − $1,200,000.00</a></div>
+      </div>
+
+      <div class="row">
+        <div class="label">20-Nov-2025</div>
+        <div class="value"><a href="receipt-mortgage.html">Mortgage Payment − $49,764.00</a></div>
+      </div>
+
+      <div class="row">
+        <div class="label">15-Nov-2025</div>
+        <div class="value"><a href="receipt-salary.html">Salary Credit + $5,000,000.00</a></div>
+      </div>
+
+      <div class="row">
+        <div class="label">10-Nov-2025</div>
+        <div class="value"><a href="receipt-utility.html">Utility Bill − $15,000.00</a></div>
+      </div>
+
+      <div class="row">
+        <div class="label">05-Nov-2025</div>
+        <div class="value"><a href="receipt-dividend.html">Investment Dividend + $12,500,000.00</a></div>
+      </div>
+
+      <div class="row">
+        <div class="label">01-Nov-2025</div>
+        <div class="value"><a href="receipt-expense.html">Corporate Expense − $2,000,000.00</a></div>
+      </div>
+
+      <div class="actions">
+        <a href="login.html" class="btn">Logout</a>
+      </div>
+    </div>
+
+    <!-- Biometric access simulation -->
+    <div class="biometric" id="biometricBtn">🔒 Unlock with Biometrics</div>
+    <div id="bioMsg" style="margin-top:10px;color:#9fb0c9;"></div>
+  </div>
+
+  <script>
+    // Biometric simulation
+    document.getElementById("biometricBtn").addEventListener("click", () => {
+      document.getElementById("bioMsg").textContent = "✅ Biometric authentication successful (simulated).";
+    });
+
+    // Theme toggle
+    document.getElementById("themeToggle").addEventListener("click", () => {
+      document.body.classList.toggle("light");
+    });
+  </script>
+</body>
+</html>
