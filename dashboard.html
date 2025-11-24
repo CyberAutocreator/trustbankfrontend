@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Trust Bank — Dashboard</title>
+  <style>
+    body { background:#0b1020; color:#e6eef8; font-family:system-ui; margin:0; }
+    .container { max-width:800px; margin:40px auto; padding:20px; }
+    .card { background:#0f1726; padding:24px; border-radius:12px; margin-bottom:20px; box-shadow:0 8px 30px rgba(2,6,23,0.6); }
+    h1 { margin-bottom:16px; }
+    .balance { font-size:28px; font-weight:800; color:#22c55e; margin-bottom:12px; }
+    .row { display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px dashed rgba(255,255,255,0.05); }
+    .row:last-child { border-bottom:none; }
+    .label { color:#9fb0c9; font-size:14px; }
+    .value { font-weight:600; }
+    .btn { display:inline-block; margin-top:16px; background:#22c55e; color:#052e17; padding:10px 14px; border-radius:8px; font-weight:700; text-decoration:none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>Welcome, Trust Bank User</h1>
+      <div class="balance">₦1,250,000.00</div>
+      <div class="label">Available Balance</div>
+    </div>
+    <div class="card">
+      <h2>Recent Transactions</h2>
+      <div class="row"><div class="label">20-Nov-2025</div><div class="value">Mortgage Payment − ₦49,764.00</div></div>
+      <div class="row"><div class="label">18-Nov-2025</div><div class="value">Salary Credit + ₦250,000.00</div></div>
+      <div class="row"><div class="label">15-Nov-2025</div><div class="value">Utility Bill − ₦15,000.00</div></div>
+      <a href="receipt.html" class="btn">View Receipt</a>
+    </div>
+  </div>
+</body>
+</html>
