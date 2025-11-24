@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Trust Bank — Login</title>
+  <style>
+    body { background:#0b1020; color:#e6eef8; font-family:system-ui; display:flex; align-items:center; justify-content:center; height:100vh; margin:0; }
+    .card { background:#0f1726; padding:32px; border-radius:12px; width:100%; max-width:400px; box-shadow:0 8px 30px rgba(2,6,23,0.6); }
+    h1 { text-align:center; margin-bottom:20px; }
+    label { display:block; margin-bottom:6px; font-size:14px; color:#9fb0c9; }
+    input { width:100%; padding:10px; margin-bottom:16px; border-radius:8px; border:1px solid rgba(255,255,255,0.08); background:#0a1428; color:#e6eef8; }
+    button { width:100%; padding:12px; border:none; border-radius:8px; background:#22c55e; color:#052e17; font-weight:700; cursor:pointer; }
+    button:hover { opacity:0.9; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Trust Bank Login</h1>
+    <!-- Redirects to dashboard.html -->
+    <form action="dashboard.html" method="get">
+      <label for="username">Username</label>
+      <input type="text" id="username" required />
+      <label for="password">Password</label>
+      <input type="password" id="password" required />
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</body>
+</html>
