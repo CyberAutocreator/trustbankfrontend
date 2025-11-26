@@ -1,9 +1,4 @@
 function App() {
-  return (
-    <div>
-      <h1>Welcome to TrustBank Frontend</h1>
-    </div>
-  )
+  return <h1>Welcome to TrustBank Frontend</h1>
 }
-
 export default App
