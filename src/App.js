@@ -1,10 +1,9 @@
-import Navbar from './components/Navbar';
-
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <Routes>{/* your routes */}</Routes>
-    </Router>
-  );
+    <div>
+      <h1>Welcome to TrustBank Frontend</h1>
+    </div>
+  )
 }
+
+export default App
