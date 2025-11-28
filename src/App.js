@@ -7,7 +7,11 @@ function App() {
 
   return (
     <div>
-      {user ? <Dashboard user={user} /> : <Login onLogin={setUser} />}
+      {!user ? (
+        <Login onLogin={setUser} />
+      ) : (
+        <Dashboard user={user} />
+      )}
     </div>
   );
 }
