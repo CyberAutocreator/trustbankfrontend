@@ -1,9 +1,8 @@
+import React from "react";
+import Dashboard from "./components/Dashboard";
+
 function App() {
-  return (
-    <div>
-      <h1>Welcome to TrustBank Frontend</h1>
-    </div>
-  )
+  return <Dashboard />;
 }
 
-export default App
+export default App;
