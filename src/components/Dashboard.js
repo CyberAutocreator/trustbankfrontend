@@ -46,6 +46,7 @@ function Dashboard() {
 
       <div className="card">
         <h2>Transaction History</h2>
+        {transactions.length === 0 && <p>No transactions yet</p>}
         {transactions.map((tx, i) => (
           <div className="row" key={i}>
             <div className="label">
