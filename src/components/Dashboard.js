@@ -13,23 +13,31 @@ function Dashboard({ user }) {
 
   useEffect(() => {
     async function fetchData() {
-      // Fetch account balance for this user
-      const { data: account } = await supabase
+      // Fetch account balance for this logged-in user
+      const { data: account, error: accountError } = await supabase
         .from("accounts")
         .select("balance")
         .eq("user_id", user.id) // link account to logged-in user
         .single();
 
-      if (account) setBalance(account.balance);
+      if (accountError) {
+        console.error("Error fetching account:", accountError.message);
+      } else if (account) {
+        setBalance(account.balance);
+      }
 
-      // Fetch transactions for this user
-      const { data: txs } = await supabase
+      // Fetch transactions for this logged-in user
+      const { data: txs, error: txError } = await supabase
         .from("transactions")
         .select("amount, description, created_at")
         .eq("user_id", user.id)
         .order("created_at", { ascending: false });
 
-      if (txs) setTransactions(txs);
+      if (txError) {
+        console.error("Error fetching transactions:", txError.message);
+      } else if (txs) {
+        setTransactions(txs);
+      }
     }
 
     fetchData();
@@ -52,7 +60,7 @@ function Dashboard({ user }) {
               {new Date(tx.created_at).toLocaleDateString()}
             </div>
             <div className="value">
-              {tx.description} {formatUSD(tx.amount)}
+              {tx.description} — {formatUSD(tx.amount)}
             </div>
           </div>
         ))}
