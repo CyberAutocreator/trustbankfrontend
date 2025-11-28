@@ -1,4 +1,9 @@
+import React, { useEffect, useState } from "react";
+import { supabase } from "../supabaseClient";
+import TransferFunds from "./TransferFunds";
+import DepositWithdraw from "./DepositWithdraw";
 import TransactionSearch from "./TransactionSearch";
+import "./Dashboard.css";
 
 function Dashboard({ user }) {
   const [account, setAccount] = useState(null);
@@ -7,6 +12,7 @@ function Dashboard({ user }) {
 
   useEffect(() => {
     async function fetchData() {
+      // Fetch account info
       const { data: accountData } = await supabase
         .from("accounts")
         .select("*")
@@ -15,6 +21,7 @@ function Dashboard({ user }) {
 
       setAccount(accountData);
 
+      // Fetch transactions
       const { data: transactionData } = await supabase
         .from("transactions")
         .select("*")
@@ -33,7 +40,9 @@ function Dashboard({ user }) {
       {/* Balance */}
       <div className="dashboard-card balance-card">
         <h2>Account Balance</h2>
-        <p className="balance-amount">${account?.balance?.toLocaleString()}</p>
+        <p className="balance-amount">
+          ${account?.balance?.toLocaleString() || 0}
+        </p>
       </div>
 
       {/* Transactions */}
@@ -79,3 +88,5 @@ function Dashboard({ user }) {
     </div>
   );
 }
+
+export default Dashboard;
