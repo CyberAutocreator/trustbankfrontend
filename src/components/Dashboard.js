@@ -1,42 +1,50 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { supabase } from "../supabaseClient";
 
-function Login({ onLogin }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+function Dashboard({ user }) {
+  const [account, setAccount] = useState(null);
+  const [transactions, setTransactions] = useState([]);
 
-  async function handleLogin(e) {
-    e.preventDefault();
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+  useEffect(() => {
+    async function fetchData() {
+      // Fetch account balance
+      const { data: accountData } = await supabase
+        .from("accounts")
+        .select("*")
+        .eq("user_id", user.id)
+        .single();
 
-    if (error) {
-      alert("Login failed: " + error.message);
-    } else {
-      onLogin(data.user);
+      setAccount(accountData);
+
+      // Fetch transaction history
+      const { data: transactionData } = await supabase
+        .from("transactions")
+        .select("*")
+        .eq("user_id", user.id)
+        .order("created_at", { ascending: false });
+
+      setTransactions(transactionData || []);
     }
-  }
+
+    if (user) fetchData();
+  }, [user]);
 
   return (
-    <form onSubmit={handleLogin}>
-      <h2>Login</h2>
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button type="submit">Login</button>
-    </form>
+    <div>
+      <h2>Welcome, {account?.user_name}</h2>
+      <h3>Balance: ${account?.balance?.toLocaleString()}</h3>
+
+      <h3>Transaction History</h3>
+      <ul>
+        {transactions.map((tx) => (
+          <li key={tx.id}>
+            {tx.description}: {tx.amount < 0 ? "-" : "+"}${Math.abs(tx.amount).toLocaleString()} 
+            ({new Date(tx.created_at).toLocaleDateString()})
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
-export default Login;
+export default Dashboard;
