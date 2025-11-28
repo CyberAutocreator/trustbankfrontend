@@ -1,70 +1,20 @@
-.dashboard-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  padding: 40px;
-}
-
-.dashboard-card {
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-.balance-card {
-  grid-column: span 2;
-  text-align: center;
-}
-
-.balance-amount {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #0077cc;
-}
-
-.transactions-card table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.transactions-card th, .transactions-card td {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-}
-
-.negative {
-  color: red;
-}
-
-.positive {
-  color: green;
-}
-
-.transfer-card, .deposit-card {
+.profile-card {
   grid-column: span 2;
 }
 
-.search-bar {
-  margin-bottom: 15px;
+.profile-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.search-bar input {
-  width: 100%;
+.profile-card input {
   padding: 8px;
   border-radius: 4px;
   border: 1px solid #aaa;
 }
 
-.deposit-card input {
-  margin-right: 10px;
-  padding: 8px;
-  border-radius: 4px;
-  border: 1px solid #aaa;
-}
-
-.deposit-card button {
-  margin: 5px;
+.profile-card button {
   padding: 8px 12px;
   background-color: #0077cc;
   color: white;
@@ -73,6 +23,6 @@
   cursor: pointer;
 }
 
-.deposit-card button:hover {
+.profile-card button:hover {
   background-color: #005fa3;
 }
