@@ -1,4 +1,4 @@
-c// server.js: Simple Express server to serve the React/Front-end build directory
+// server.js: Simple Express server to serve the React/Front-end build directory
 
 const express = require('express');
 const path = require('path');
@@ -20,23 +20,3 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running and serving files from the 'build' folder on port ${PORT}`);
 });
-
-
-### Crucial Steps Summary:
-
-1.  **Correct `server.js`:** Replace the content of your existing `server.js` file with the corrected code above.
-2.  **Verify `package.json`:** Ensure your `package.json` file contains `express` in the `dependencies` and the combined start script we discussed:
-    ```json
-      "dependencies": {
-        "express": "^4.19.2", 
-        // ... other dependencies
-      },
-      "scripts": {
-        "start": "npm run build && node server.js", 
-        "build": "react-scripts build" 
-        // or whatever your actual build command is
-      }
-    ```
-3.  **Redeploy:** Commit the change and try running the deployment again.
-
-Fixing the typo on the first line should resolve the `Syntax error: Missing semicolon` issue and allow the server to start! Let me know if that works for you.
