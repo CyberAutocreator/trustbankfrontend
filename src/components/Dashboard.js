@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "../supabaseClient";
 
-function Dashboard() {
+function Dashboard({ user }) {
   const [balance, setBalance] = useState(0);
   const [transactions, setTransactions] = useState([]);
 
-  // Formatter for USD
   const formatUSD = (amount) =>
     new Intl.NumberFormat("en-US", {
       style: "currency",
@@ -14,32 +13,32 @@ function Dashboard() {
 
   useEffect(() => {
     async function fetchData() {
-      // Fetch account balance
+      // Fetch account balance for this user
       const { data: account } = await supabase
         .from("accounts")
         .select("balance")
-        .eq("id", 1443678161) // replace with your account ID
+        .eq("user_id", user.id) // link account to logged-in user
         .single();
 
       if (account) setBalance(account.balance);
 
-      // Fetch transactions
+      // Fetch transactions for this user
       const { data: txs } = await supabase
         .from("transactions")
         .select("amount, description, created_at")
-        .eq("account_id", 1443678161)
+        .eq("user_id", user.id)
         .order("created_at", { ascending: false });
 
       if (txs) setTransactions(txs);
     }
 
     fetchData();
-  }, []);
+  }, [user]);
 
   return (
     <div className="container">
       <div className="card">
-        <h1>Welcome, Trust Bank User</h1>
+        <h1>Welcome, {user.email}</h1>
         <div className="balance">{formatUSD(balance)}</div>
         <div className="label">Available Balance (USD)</div>
       </div>
