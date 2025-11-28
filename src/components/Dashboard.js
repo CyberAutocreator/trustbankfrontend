@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "../supabaseClient";
+import TransferFunds from "./TransferFunds";
+import "./Dashboard.css";
 
 function Dashboard({ user }) {
   const [account, setAccount] = useState(null);
@@ -7,7 +9,6 @@ function Dashboard({ user }) {
 
   useEffect(() => {
     async function fetchData() {
-      // Fetch account balance
       const { data: accountData } = await supabase
         .from("accounts")
         .select("*")
@@ -16,7 +17,6 @@ function Dashboard({ user }) {
 
       setAccount(accountData);
 
-      // Fetch transaction history
       const { data: transactionData } = await supabase
         .from("transactions")
         .select("*")
@@ -30,19 +30,50 @@ function Dashboard({ user }) {
   }, [user]);
 
   return (
-    <div>
-      <h2>Welcome, {account?.user_name}</h2>
-      <h3>Balance: ${account?.balance?.toLocaleString()}</h3>
+    <div className="dashboard-container">
+      {/* Balance Section */}
+      <div className="dashboard-card balance-card">
+        <h2>Account Balance</h2>
+        <p className="balance-amount">
+          ${account?.balance?.toLocaleString()}
+        </p>
+      </div>
 
-      <h3>Transaction History</h3>
-      <ul>
-        {transactions.map((tx) => (
-          <li key={tx.id}>
-            {tx.description}: {tx.amount < 0 ? "-" : "+"}${Math.abs(tx.amount).toLocaleString()} 
-            ({new Date(tx.created_at).toLocaleDateString()})
-          </li>
-        ))}
-      </ul>
+      {/* Transactions Section */}
+      <div className="dashboard-card transactions-card">
+        <h2>Transaction History</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th>Amount</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {transactions.map((tx) => (
+              <tr key={tx.id}>
+                <td>{tx.description}</td>
+                <td className={tx.amount < 0 ? "negative" : "positive"}>
+                  {tx.amount < 0 ? "-" : "+"}${Math.abs(tx.amount).toLocaleString()}
+                </td>
+                <td>{new Date(tx.created_at).toLocaleDateString()}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Transfer Funds Section */}
+      <div className="dashboard-card transfer-card">
+        <TransferFunds user={user} />
+      </div>
+
+      {/* Analytics Section (placeholder for charts) */}
+      <div className="dashboard-card analytics-card">
+        <h2>Spending Analytics</h2>
+        <p>Charts and insights will appear here.</p>
+      </div>
     </div>
   );
 }
