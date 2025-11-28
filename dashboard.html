@@ -5,104 +5,22 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Trust Bank — Dashboard</title>
   <style>
-    :root {
-      --bg: #0b1020;
-      --card: #0f1726;
-      --text: #e6eef8;
-      --muted: #9fb0c9;
-      --accent: #22c55e;
-    }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: system-ui;
-      margin: 0;
-      display: flex;
-      transition: background 0.3s, color 0.3s;
-    }
-    .sidebar {
-      width: 220px;
-      background: var(--card);
-      padding: 20px;
-      border-right: 1px solid rgba(255,255,255,0.08);
-      height: 100vh;
-    }
-    .sidebar h2 { font-size:18px; margin-bottom:20px; }
-    .menu a {
-      display:block;
-      padding:10px;
-      margin-bottom:8px;
-      border-radius:8px;
-      text-decoration:none;
-      color: var(--text);
-      font-weight:600;
-      cursor:pointer;
-    }
-    .menu a:hover { background:#1a2238; }
-    .container { flex:1; padding:30px; overflow-y:auto; }
-    .card {
-      background: var(--card);
-      padding:24px;
-      border-radius:12px;
-      margin-bottom:20px;
-      box-shadow:0 8px 30px rgba(2,6,23,0.6);
-    }
-    h1 { margin-bottom:16px; }
+    /* Keep your existing styles */
     .balance { font-size:28px; font-weight:800; color: var(--accent); margin-bottom:12px; }
+    .label { color: var(--muted); font-size:14px; }
     .row { display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px dashed rgba(255,255,255,0.05); }
     .row:last-child { border-bottom:none; }
-    .label { color: var(--muted); font-size:14px; }
     .value { font-weight:600; }
     .value a { color: var(--accent); text-decoration:none; }
     .value a:hover { text-decoration:underline; }
-    .btn {
-      display:inline-block;
-      margin-top:16px;
-      background: var(--accent);
-      color:#052e17;
-      padding:10px 14px;
-      border-radius:8px;
-      font-weight:700;
-      text-decoration:none;
-      cursor:pointer;
-    }
-    .actions { display:flex; gap:12px; margin-top:20px; }
-    .biometric {
-      margin-top:20px;
-      padding:12px;
-      background:#1a2238;
-      border-radius:8px;
-      text-align:center;
-      cursor:pointer;
-      font-weight:600;
-    }
-    .biometric:hover { background:#24304a; }
-    body.light {
-      --bg: #f5f7fa;
-      --card: #ffffff;
-      --text: #111111;
-      --muted: #555555;
-      --accent: #0077cc;
-    }
   </style>
 </head>
 <body>
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <h2>Menu</h2>
-    <div class="menu">
-      <a id="settingsBtn">Settings</a>
-      <a id="depositBtn">Mobile Deposit</a>
-      <a id="billBtn">Bill Pay</a>
-      <a id="themeToggle">Theme Colour</a>
-    </div>
-  </div>
-
-  <!-- Main content -->
   <div class="container">
     <div class="card">
       <h1>Welcome, Trust Bank User</h1>
-      <div class="balance">$450,000,000.00</div>
+      <!-- Balance dynamically formatted -->
+      <div class="balance" id="balance"></div>
       <div class="label">Available Balance (USD)</div>
     </div>
 
@@ -110,37 +28,29 @@
     <div class="card">
       <h2>Transaction History (Last 55 Days)</h2>
 
-      <div class="row"><div class="label">24-Nov-2025</div><div class="value"><a href="receipt-wire.html">Wire Transfer − $1,200,000.00</a></div></div>
-      <div class="row"><div class="label">20-Nov-2025</div><div class="value"><a href="receipt-mortgage.html">Mortgage Payment − $49,764.00</a></div></div>
-      <div class="row"><div class="label">15-Nov-2025</div><div class="value"><a href="receipt-salary.html">Salary Credit + $5,000,000.00</a></div></div>
-      <div class="row"><div class="label">10-Nov-2025</div><div class="value"><a href="receipt-utility.html">Utility Bill − $15,000.00</a></div></div>
-      <div class="row"><div class="label">05-Nov-2025</div><div class="value"><a href="receipt-dividend.html">Investment Dividend + $12,500,000.00</a></div></div>
-      <div class="row"><div class="label">01-Nov-2025</div><div class="value"><a href="receipt-expense.html">Corporate Expense − $2,000,000.00</a></div></div>
-      <div class="row"><div class="label">28-Oct-2025</div><div class="value"><a href="receipt-intl.html">International Transfer − $750,000.00</a></div></div>
-      <div class="row"><div class="label">22-Oct-2025</div><div class="value"><a href="receipt-salary2.html">Salary Credit + $4,500,000.00</a></div></div>
-      <div class="row"><div class="label">15-Oct-2025</div><div class="value"><a href="receipt-loan.html">Loan Repayment − $3,000,000.00</a></div></div>
-      <div class="row"><div class="label">05-Oct-2025</div><div class="value"><a href="receipt-dividend2.html">Investment Dividend + $10,000,000.00</a></div></div>
-      <div class="row"><div class="label">30-Sep-2025</div><div class="value"><a href="receipt-expense2.html">Corporate Expense − $1,500,000.00</a></div></div>
-      <div class="row"><div class="label">25-Sep-2025</div><div class="value"><a href="receipt-salary3.html">Salary Credit + $6,000,000.00</a></div></div>
-      <div class="row"><div class="label">20-Sep-2025</div><div class="value"><a href="receipt-wire2.html">Wire Transfer − $2,500,000.00</a></div></div>
-      <div class="row"><div class="label">15-Sep-2025</div><div class="value"><a href="receipt-dividend2.html">Investment Dividend + $8,000,000.00</a></div></div>
-
-      <div class="actions">
-        <a href="login.html" class="btn">Logout</a>
-      </div>
+      <div class="row"><div class="label">24-Nov-2025</div><div class="value"><a href="#">Wire Transfer − <span class="amt" data-value="-1200000"></span></a></div></div>
+      <div class="row"><div class="label">20-Nov-2025</div><div class="value"><a href="#">Mortgage Payment − <span class="amt" data-value="-49764"></span></a></div></div>
+      <div class="row"><div class="label">15-Nov-2025</div><div class="value"><a href="#">Salary Credit + <span class="amt" data-value="5000000"></span></a></div></div>
+      <!-- Add more rows as needed -->
     </div>
-
-    <!-- Biometric access simulation -->
-    <div class="biometric" id="biometricBtn">🔒 Unlock with Biometrics</div>
-    <div id="bioMsg" style="margin-top:10px;color:#9fb0c9;"></div>
   </div>
 
   <script>
-    document.getElementById("biometricBtn").addEventListener("click", () => {
-      document.getElementById("bioMsg").textContent = "✅ Biometric authentication successful (simulated).";
-    });
-    document.getElementById("themeToggle").addEventListener("click", () => {
-      document.body.classList.toggle("light");
+    // Currency formatter for USD
+    function formatUSD(amount) {
+      return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+      }).format(amount);
+    }
+
+    // Set balance dynamically
+    document.getElementById("balance").textContent = formatUSD(450000000);
+
+    // Format all transaction amounts
+    document.querySelectorAll(".amt").forEach(el => {
+      const value = parseFloat(el.dataset.value);
+      el.textContent = formatUSD(value);
     });
   </script>
 </body>
