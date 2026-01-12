@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Trust Bank — Dashboard</title>
   <style>
-    /* Keep your existing styles */
     .balance { font-size:28px; font-weight:800; color: var(--accent); margin-bottom:12px; }
     .label { color: var(--muted); font-size:14px; }
     .row { display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px dashed rgba(255,255,255,0.05); }
@@ -19,24 +18,42 @@
   <div class="container">
     <div class="card">
       <h1>Welcome, Trust Bank User</h1>
-      <!-- Balance dynamically formatted -->
+
+      <!-- Dynamic USD balance -->
       <div class="balance" id="balance"></div>
       <div class="label">Available Balance (USD)</div>
     </div>
 
-    <!-- Transaction history card -->
+    <!-- Transaction history -->
     <div class="card">
       <h2>Transaction History (Last 55 Days)</h2>
 
-      <div class="row"><div class="label">24-Nov-2025</div><div class="value"><a href="#">Wire Transfer − <span class="amt" data-value="-1200000"></span></a></div></div>
-      <div class="row"><div class="label">20-Nov-2025</div><div class="value"><a href="#">Mortgage Payment − <span class="amt" data-value="-49764"></span></a></div></div>
-      <div class="row"><div class="label">15-Nov-2025</div><div class="value"><a href="#">Salary Credit + <span class="amt" data-value="5000000"></span></a></div></div>
-      <!-- Add more rows as needed -->
+      <div class="row">
+        <div class="label">24-Nov-2025</div>
+        <div class="value"><a href="#">Wire Transfer − <span class="amt" data-value="-1200000"></span></a></div>
+      </div>
+
+      <div class="row">
+        <div class="label">20-Nov-2025</div>
+        <div class="value"><a href="#">Mortgage Payment − <span class="amt" data-value="-49764"></span></a></div>
+      </div>
+
+      <div class="row">
+        <div class="label">15-Nov-2025</div>
+        <div class="value"><a href="#">Salary Credit + <span class="amt" data-value="5000000"></span></a></div>
+      </div>
+
     </div>
   </div>
 
+  <!-- USD Currency Script -->
   <script>
-    // Currency formatter for USD
+    const USD_RATE = 1; // Set to 1 if values are already in USD
+
+    function toUSD(amount) {
+      return amount * USD_RATE;
+    }
+
     function formatUSD(amount) {
       return new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -44,13 +61,14 @@
       }).format(amount);
     }
 
-    // Set balance dynamically
-    document.getElementById("balance").textContent = formatUSD(450000000);
+    // Set balance
+    const balance = 450000000;
+    document.getElementById("balance").textContent = formatUSD(toUSD(balance));
 
-    // Format all transaction amounts
+    // Format transactions
     document.querySelectorAll(".amt").forEach(el => {
       const value = parseFloat(el.dataset.value);
-      el.textContent = formatUSD(value);
+      el.textContent = formatUSD(toUSD(value));
     });
   </script>
 </body>
