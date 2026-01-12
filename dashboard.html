@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Trust Bank — Dashboard</title>
+
   <style>
     .balance { font-size:28px; font-weight:800; color: var(--accent); margin-bottom:12px; }
     .label { color: var(--muted); font-size:14px; }
@@ -14,8 +15,10 @@
     .value a:hover { text-decoration:underline; }
   </style>
 </head>
+
 <body>
   <div class="container">
+
     <div class="card">
       <h1>Welcome, Trust Bank User</h1>
 
@@ -24,7 +27,6 @@
       <div class="label">Available Balance (USD)</div>
     </div>
 
-    <!-- Transaction history -->
     <div class="card">
       <h2>Transaction History (Last 55 Days)</h2>
 
@@ -61,15 +63,16 @@
       }).format(amount);
     }
 
-    // Set balance
+    // Set balance dynamically
     const balance = 450000000;
     document.getElementById("balance").textContent = formatUSD(toUSD(balance));
 
-    // Format transactions
+    // Format all transaction amounts
     document.querySelectorAll(".amt").forEach(el => {
       const value = parseFloat(el.dataset.value);
       el.textContent = formatUSD(toUSD(value));
     });
   </script>
+
 </body>
 </html>
