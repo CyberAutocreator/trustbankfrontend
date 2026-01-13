@@ -1,11 +1,20 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import Receipts from "./pages/Receipts";
 
 function App() {
   return (
-    <div className="app">
-      <h1>Welcome to TrustBank Frontend 🚀</h1>
-      <p>Your app is running successfully with Vite + React.</p>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/receipts" element={<Receipts />} />
+      </Routes>
+    </Router>
   );
 }
 
