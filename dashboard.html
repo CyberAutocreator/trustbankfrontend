@@ -7,8 +7,8 @@
 
   <style>
     :root {
-      --accent: #2a9d8f;   /* Define accent color */
-      --muted: #6c757d;    /* Define muted color */
+      --accent: #2a9d8f;
+      --muted: #6c757d;
     }
 
     body {
@@ -36,7 +36,9 @@
     .row { display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px dashed rgba(0,0,0,0.1); }
     .row:last-child { border-bottom:none; }
     .value { font-weight:600; }
-    .value span { color: var(--accent); }
+    .amt.negative { color: red; }
+    .amt.positive { color: green; }
+    .summary-row { display:flex; justify-content:space-between; padding:6px 0; }
   </style>
 </head>
 
@@ -45,36 +47,35 @@
 
     <div class="card">
       <h1>Welcome, Trust Bank User</h1>
-
-      <!-- Dynamic USD balance -->
       <div class="balance" id="balance"></div>
       <div class="label">Available Balance (USD)</div>
     </div>
 
     <div class="card">
       <h2>Transaction History (Last 55 Days)</h2>
-
-      <div class="row">
-        <div class="label">24-Nov-2025</div>
-        <div class="value">Wire Transfer <span class="amt" data-value="-1200000"></span></div>
-      </div>
-
-      <div class="row">
-        <div class="label">20-Nov-2025</div>
-        <div class="value">Mortgage Payment <span class="amt" data-value="-49764"></span></div>
-      </div>
-
-      <div class="row">
-        <div class="label">15-Nov-2025</div>
-        <div class="value">Salary Credit <span class="amt" data-value="5000000"></span></div>
-      </div>
-
+      <div id="transactions"></div>
     </div>
+
+    <div class="card">
+      <h2>Summary</h2>
+      <div class="summary-row">
+        <div class="label">Total Credits</div>
+        <div class="value" id="totalCredits"></div>
+      </div>
+      <div class="summary-row">
+        <div class="label">Total Debits</div>
+        <div class="value" id="totalDebits"></div>
+      </div>
+      <div class="summary-row">
+        <div class="label">Net Change</div>
+        <div class="value" id="netChange"></div>
+      </div>
+    </div>
+
   </div>
 
-  <!-- USD Currency Script -->
   <script>
-    const USD_RATE = 1; // Set to 1 if values are already in USD
+    const USD_RATE = 1;
 
     function toUSD(amount) {
       return amount * USD_RATE;
@@ -87,15 +88,56 @@
       }).format(amount);
     }
 
-    // Set balance dynamically
+    // Example balance
     const balance = 450000000;
     document.getElementById("balance").textContent = formatUSD(toUSD(balance));
 
-    // Format all transaction amounts
-    document.querySelectorAll(".amt").forEach(el => {
-      const value = parseFloat(el.dataset.value);
-      el.textContent = formatUSD(toUSD(value));
+    // Transactions array
+    const transactions = [
+      { date: "24-Nov-2025", label: "Wire Transfer", value: -1200000 },
+      { date: "20-Nov-2025", label: "Mortgage Payment", value: -49764 },
+      { date: "15-Nov-2025", label: "Salary Credit", value: 5000000 }
+    ];
+
+    // Render transactions dynamically
+    const txContainer = document.getElementById("transactions");
+    let totalCredits = 0;
+    let totalDebits = 0;
+
+    transactions.forEach(tx => {
+      const row = document.createElement("div");
+      row.className = "row";
+
+      const dateDiv = document.createElement("div");
+      dateDiv.className = "label";
+      dateDiv.textContent = tx.date;
+
+      const valueDiv = document.createElement("div");
+      valueDiv.className = "value";
+      valueDiv.innerHTML = `${tx.label} <span class="amt">${formatUSD(toUSD(tx.value))}</span>`;
+
+      const amtSpan = valueDiv.querySelector(".amt");
+      amtSpan.classList.add(tx.value < 0 ? "negative" : "positive");
+
+      row.appendChild(dateDiv);
+      row.appendChild(valueDiv);
+      txContainer.appendChild(row);
+
+      // Track totals
+      if (tx.value < 0) {
+        totalDebits += tx.value;
+      } else {
+        totalCredits += tx.value;
+      }
     });
+
+    const netChange = totalCredits + totalDebits;
+
+    // Update summary card
+    document.getElementById("totalCredits").textContent = formatUSD(toUSD(totalCredits));
+    document.getElementById("totalDebits").textContent = formatUSD(toUSD(totalDebits));
+    document.getElementById("netChange").textContent = formatUSD(toUSD(netChange));
+    document.getElementById("netChange").style.color = netChange < 0 ? "red" : "green";
   </script>
 
 </body>
