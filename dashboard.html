@@ -6,13 +6,37 @@
   <title>Trust Bank — Dashboard</title>
 
   <style>
+    :root {
+      --accent: #2a9d8f;   /* Define accent color */
+      --muted: #6c757d;    /* Define muted color */
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      color: #212529;
+      margin: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .card {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
     .balance { font-size:28px; font-weight:800; color: var(--accent); margin-bottom:12px; }
     .label { color: var(--muted); font-size:14px; }
-    .row { display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px dashed rgba(255,255,255,0.05); }
+    .row { display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px dashed rgba(0,0,0,0.1); }
     .row:last-child { border-bottom:none; }
     .value { font-weight:600; }
-    .value a { color: var(--accent); text-decoration:none; }
-    .value a:hover { text-decoration:underline; }
+    .value span { color: var(--accent); }
   </style>
 </head>
 
@@ -32,17 +56,17 @@
 
       <div class="row">
         <div class="label">24-Nov-2025</div>
-        <div class="value"><a href="#">Wire Transfer − <span class="amt" data-value="-1200000"></span></a></div>
+        <div class="value">Wire Transfer <span class="amt" data-value="-1200000"></span></div>
       </div>
 
       <div class="row">
         <div class="label">20-Nov-2025</div>
-        <div class="value"><a href="#">Mortgage Payment − <span class="amt" data-value="-49764"></span></a></div>
+        <div class="value">Mortgage Payment <span class="amt" data-value="-49764"></span></div>
       </div>
 
       <div class="row">
         <div class="label">15-Nov-2025</div>
-        <div class="value"><a href="#">Salary Credit + <span class="amt" data-value="5000000"></span></a></div>
+        <div class="value">Salary Credit <span class="amt" data-value="5000000"></span></div>
       </div>
 
     </div>
